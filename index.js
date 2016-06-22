@@ -185,7 +185,8 @@ function zoomed() {
   // adding zoom level as a class  
   d3.select(".layer").attr("class",function(){ return "layer z"+zoomLevel; });
   // url hash for the location
-  window.location.hash = [mapCenter[0].toFixed(5), mapCenter[1].toFixed(5), zoomLevel].join("/");
+  var hash = '#' + [mapCenter[0].toFixed(5), mapCenter[1].toFixed(5), zoomLevel].join("/");
+  window.history.replaceState(undefined, undefined, hash);
 
   var image = svg
       .attr("transform", matrix3d(tiles.scale, tiles.translate))
